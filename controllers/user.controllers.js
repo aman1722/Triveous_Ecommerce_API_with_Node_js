@@ -45,7 +45,7 @@ const login = async (req, res) => {
         if (!isPasswordCorrect) return res.status(400).send({ msg: "Incorrect Password!" });;
 
         const token = jwt.sign(
-            { user_id: userExists._id, role: userExists.role },
+            { userId: userExists._id, role: userExists.role },
             process.env.JWT_LOGIN_SECRET,
             {
                 expiresIn: "3h",
