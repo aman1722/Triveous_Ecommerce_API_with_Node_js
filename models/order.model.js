@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const cartSchema = mongoose.Schema({
+const orderSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "UserModel",
@@ -20,10 +20,22 @@ const cartSchema = mongoose.Schema({
       },
     },
   ],
+  grandTotal: {
+    type: Number,
+    required: true,
+  },
+  status: {
+    type: String,
+    default: "placed",
+  },
+  orderedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-const CartModel = mongoose.model("Cart", cartSchema);
+const OrderModel = mongoose.model("Order", orderSchema);
 
 module.exports = {
-    CartModel
+    OrderModel
 };
