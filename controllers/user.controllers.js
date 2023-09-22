@@ -1,6 +1,7 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { blacklistModel } = require("../models/blacklist.model");
 
 
 
@@ -22,7 +23,7 @@ const register = async (req,res)=>{
 
             res.status(201).send({msg:"User Registration Successful"})
         } catch (error) {
-            console.log(error.message);
+            console.log('/user/register: ', err.message);
             res.status(501).send({msg:"Internal Server error",error:error.message});
         }
 }
@@ -49,7 +50,7 @@ const login = async (req,res)=>{
           
             res.status(200).json({ message: "Login Successful", token });
         } catch (error) {
-            console.log(error.message);
+            console.log('/user/login: ', err.message);
             res.status(501).send({msg:"Internal Server error",error:error.message});
         }
 }
@@ -57,7 +58,16 @@ const login = async (req,res)=>{
 
 
 const logout = async (req,res)=>{
-        
+    try{
+        const token = req.headers.authorization.split(' ')[1] || req.headers.authorization;
+        const blacklisted = new blacklistModel({"token": token});
+        await blacklisted.save();
+        console.log('logout successful')
+        res.status(200).send({msg: 'Logout Successful'});
+    }catch(error){
+        console.log('/user/logout: ', error.message);
+        res.status(501).send({msg:"Internal Server error",error:error.message});
+    }
 }
 
 
