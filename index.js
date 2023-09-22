@@ -1,6 +1,8 @@
 const express = require("express");
 const { connection } = require("./config/db");
+const { userRouter } = require("./routes/user.routes");
 require("dotenv").config();
+const cors = require("cors");
 
 
 
@@ -8,13 +10,14 @@ require("dotenv").config();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/",(req,res)=>{
     res.status(200).send({msg:"Welcome To Ecommerce Api Backend"})
 })
 
 
-
+app.use("/user",userRouter);
 
 
 
