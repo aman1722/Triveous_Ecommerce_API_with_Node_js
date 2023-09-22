@@ -5,6 +5,7 @@ require("dotenv").config();
 const cors = require("cors");
 const { userProductRouter } = require("./routes/user.product.routes");
 const { sellerProductRouter } = require("./routes/seller.product.routes");
+const { cartRouter } = require("./routes/cart.routes");
 
 
 
@@ -22,6 +23,7 @@ app.get("/",(req,res)=>{
 app.use("/user",userRouter);
 app.use("/user/products",userProductRouter);
 app.use("/seller/products",sellerProductRouter);
+app.use("/cart",cartRouter);
 
 
 

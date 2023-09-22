@@ -93,7 +93,8 @@ const getSellerProductById = async(req,res)=>{
         }
 
     } catch (error) {
-        
+        console.log('/seller/products/getProductById: ', error.message);
+        res.status(501).send({ msg: "Internal Server error", error: error.message });
     }
 }
 module.exports = {
