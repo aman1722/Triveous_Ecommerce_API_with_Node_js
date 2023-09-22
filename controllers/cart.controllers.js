@@ -89,22 +89,22 @@ const quantityDecrement = async (req, res) => {
         if (!cartExists) {
             return res.status(404).send({ message: "Cart is empty" });
         }
-        const cartItemIndex = cart.items.findIndex(
+        const cartItemIndex = cartExists.items.findIndex(
             (item) => item.product.toString() === id
         );
 
-        if (cart.items[cartItemIndex].quantity > 0) {
-            cart.items[cartItemIndex].quantity -= 1;
-            if (cart.items[cartItemIndex].quantity === 0) {
-                cart.items.splice(cartItemIndex, 1);
+        if (cartExists.items[cartItemIndex].quantity > 0) {
+            cartExists.items[cartItemIndex].quantity -= 1;
+            if (cartExists.items[cartItemIndex].quantity === 0) {
+                cartExists.items.splice(cartItemIndex, 1);
             }
         }
 
-        await cart.save();
+        await cartExists.save();
 
         res.status(200).send({ message: "Quantity decremented successfully" });
     } catch (error) {
-        console.log('/cart//decrement/:id: ', error.message);
+        console.log('/cart/decrement/:id: ', error.message);
         res.status(501).send({ msg: 'Internal Server error', error: error.message });
     }
 
@@ -124,24 +124,24 @@ const quantityIncrement = async (req, res) => {
         if (!cartExists) {
             return res.status(404).send({ message: "Cart is empty" });
         }
-        const cartItemIndex = cart.items.findIndex(
+        const cartItemIndex = cartExists.items.findIndex(
             (item) => item.product.toString() === id
         );
 
         if (cartItemIndex !== -1) {
-            cart.items[cartItemIndex].quantity += 1;
+            cartExists.items[cartItemIndex].quantity += 1;
         } else {
-            cart.items.push({
+            cartExists.items.push({
                 product: id,
                 quantity: 1,
             });
         }
 
-        await cart.save();
+        await cartExists.save();
 
         res.status(200).send({ message: "Quantity Incremented successfully" });
     } catch (error) {
-        console.log('/cart/decrement/:id: ', error.message);
+        console.log('/cart/increment/:id: ', error.message);
         res.status(501).send({ msg: 'Internal Server error', error: error.message });
     }
 
@@ -156,13 +156,13 @@ const removeProductFromCart = async (req, res) => {
         const { userId } = req.body;
         const { id } = req.params;
 
-        const cart = await CartModel.findOne({ user: userId });
+        const cartExists = await CartModel.findOne({ user: userId });
 
-        if (!cart) {
+        if (!cartExists) {
             return res.status(404).send({ message: "Cart is empty" });
         }
 
-        const cartItemIndex = cart.items.findIndex(
+        const cartItemIndex = cartExists.items.findIndex(
             (item) => item.product.toString() === id
         );
 
@@ -170,9 +170,9 @@ const removeProductFromCart = async (req, res) => {
             return res.status(404).send({ message: "Product not found!" });
         }
 
-        cart.items.splice(cartItemIndex, 1);
+        cartExists.items.splice(cartItemIndex, 1);
 
-        await cart.save();
+        await cartExists.save();
 
         res.status(200).send({ message: "Product removed from the cart successfully" });
     } catch (error) {

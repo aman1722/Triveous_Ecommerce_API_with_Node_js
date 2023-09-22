@@ -20,7 +20,7 @@ cartRouter.get("/",authMiddleware,getCart)
 
 
 cartRouter.patch("/decrement/:id",[
-    param("productId")
+    param("id")
       .notEmpty()
       .withMessage("Product ID is required")
       .isMongoId()
@@ -29,7 +29,7 @@ cartRouter.patch("/decrement/:id",[
 
 
 cartRouter.patch("/increment/:id",[
-    param("productId")
+    param("id")
       .notEmpty()
       .withMessage("Product ID is required")
       .isMongoId()
@@ -38,7 +38,7 @@ cartRouter.patch("/increment/:id",[
 
 
 cartRouter.delete("/remove/:id",[
-      param("productId")
+      param("id")
         .notEmpty()
         .withMessage("Product ID is required.")
         .isMongoId()
