@@ -26,7 +26,7 @@ const orderSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["placed", "dispatched","deliverd"],
+    enum: ["placed", "dispatch","deliverd"],
     default: "placed",
   },
   orderedAt: {
