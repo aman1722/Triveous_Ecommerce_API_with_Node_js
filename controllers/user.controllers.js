@@ -1,5 +1,6 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 
 
@@ -22,13 +23,35 @@ const register = async (req,res)=>{
             res.status(201).send({msg:"User Registration Successful"})
         } catch (error) {
             console.log(error.message);
-            res.status(501).send({msg:error.message});
+            res.status(501).send({msg:"Internal Server error",error:error.message});
         }
 }
 
 
 const login = async (req,res)=>{
-        
+        try {
+            const {email,password} = req.body;
+            const userExists = await UserModel.findOne({email});;
+            
+            if(!userExists) return res.status(400).send({msg:"User not exixts! Plaese register first"});
+
+            const isPasswordCorrect = await bcrypt.compare(password, userExists.password);
+
+            if(!isPasswordCorrect) return res.status(400).send({msg:"Incorrect Password!"});;
+
+            const token = jwt.sign(
+                { user_id: userExists._id, role: userExists.role },
+                process.env.JWT_LOGIN_SECRET,
+                {
+                  expiresIn: "3h",
+                }
+            );
+          
+            res.status(200).json({ message: "Login Successful", token });
+        } catch (error) {
+            console.log(error.message);
+            res.status(501).send({msg:"Internal Server error",error:error.message});
+        }
 }
 
 
