@@ -6,6 +6,8 @@ const cors = require("cors");
 const { userProductRouter } = require("./routes/user.product.routes");
 const { sellerProductRouter } = require("./routes/seller.product.routes");
 const { cartRouter } = require("./routes/cart.routes");
+const { orderRouter } = require("./routes/order.routes");
+const { authMiddleware } = require("./middleware/auth.middleware");
 
 
 
@@ -22,9 +24,10 @@ app.get("/",(req,res)=>{
 
 app.use("/user",userRouter);
 app.use("/user/products",userProductRouter);
+app.use(authMiddleware);
 app.use("/seller/products",sellerProductRouter);
 app.use("/cart",cartRouter);
-
+app.use("/order",orderRouter);
 
 
 
