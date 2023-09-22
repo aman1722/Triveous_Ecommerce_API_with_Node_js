@@ -3,6 +3,8 @@ const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
 require("dotenv").config();
 const cors = require("cors");
+const { userProductRouter } = require("./routes/user.product.routes");
+const { sellerProductRouter } = require("./routes/seller.product.routes");
 
 
 
@@ -18,6 +20,8 @@ app.get("/",(req,res)=>{
 
 
 app.use("/user",userRouter);
+app.use("/user/products",userProductRouter);
+app.use("/seller/products",sellerProductRouter);
 
 
 

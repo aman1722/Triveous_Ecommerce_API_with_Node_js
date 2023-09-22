@@ -8,8 +8,10 @@ const authMiddleware = (req,res,next)=>{
     if(token){
         const decoded = jwt.verify(token,process.env.JWT_LOGIN_SECRET)
         if(decoded){
-            req.userId = decoded.userId;
-            req.role = decoded.role;
+            req.body.userId = decoded.userId;
+            req.body.role = decoded.role;
+
+            console.log(decoded.userId)
             next();
         }else{
             res.status(400).send({msg:"Please Login Fisrt!"})
