@@ -8,6 +8,11 @@ This project involves the development of a robust backend API for an eCommerce a
   https://triveous-ecommerce.onrender.com/
 ```
 
+## API Documentation Swagger
+
+```bash
+  https://triveous-ecommerce.onrender.com/api-docs/
+```
 
 ## Key Features
 
