@@ -23,15 +23,14 @@ const getProducts = async (req, res) => {
 const getCategories = async (req, res) => {
     try {
         const categories = await ProductModel.aggregate([
-            { $group: { _id: "$category" } },
-            { $project: { _id: 0, category: "$_id" } },
+            { $group: { _id: null, categories: { $addToSet: "$category" } } },
+            { $project: { _id: 0, categories: 1 } },
         ]);
-
         if (categories.length === 0) {
             return res.status(404).json({ message: "No Categories Found" });
         }
 
-        res.status(200).json(categories);
+        res.status(200).send(categories[0]);
     } catch (error) {
         console.log('/user/products/categories: ', error.message);
         res.status(501).send({ msg: "Internal Server error", error: error.message });
