@@ -8,6 +8,8 @@ const { sellerProductRouter } = require("./routes/seller.product.routes");
 const { cartRouter } = require("./routes/cart.routes");
 const { orderRouter } = require("./routes/order.routes");
 const { authMiddleware } = require("./middleware/auth.middleware");
+const { rateLimiter } = require("./middleware/rateLimiter.middleware");
+
 
 
 
@@ -21,7 +23,7 @@ app.get("/",(req,res)=>{
     res.status(200).send({msg:"Welcome To Ecommerce Api Backend"})
 })
 
-
+app.use(rateLimiter);
 app.use("/user",userRouter);
 app.use("/user/products",userProductRouter);
 app.use(authMiddleware);
