@@ -26,7 +26,7 @@ Live :
 1. Clone the repository:
 
    ```
-   git clone https://github.com/aman1722/Ecommerce_API_with_Node_js
+   git clone https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js
    ```
    
 2. Install dependencies:
