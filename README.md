@@ -60,8 +60,8 @@ Live :
 - `GET /seller/products`: Seller who currently logged in can fetch all products posted him.
 - `GET /seller/products/:id`:  Seller who currently logged in can fetch a specific product using its ID.
 - `POST /seller/products/addProduct`:  Seller who currently logged in can post a new product.
-- `PATCH /seller/products/UpdateProduct/:id`:  Seller who currently logged in can update his products.
-- `DELETE /seller/products/delete/:id`:  Seller who currently logged in can delete his products.
+- `PATCH /seller/products/updateProduct/:id`:  Seller who currently logged in can update his products.
+- `DELETE /seller/products/deleteProduct/:id`:  Seller who currently logged in can delete his products.
 - ...
 
 ### User Product Routes(Public)
