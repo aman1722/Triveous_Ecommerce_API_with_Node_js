@@ -1,4 +1,4 @@
-# Ecommerce_API_with_Node_js
+# Triveous_Ecommerce_API_with_Node_js
 
 This project involves the development of a robust backend API for an eCommerce application. The primary focus of the project is on the logic and functionality that powers the eCommerce platform and the backend's routes, use cases, and careful consideration of edge cases are crucial for building a reliable and functional eCommerce system. This backend can later be integrated with various frontend platforms to create a complete eCommerce solution.
 
