@@ -11,6 +11,47 @@ const userProductRouter = express.Router();
  *     description: API endpoints related to user products
  */
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Product:
+ *       type: object
+ *       required:
+ *         - title
+ *         - category
+ *         - price
+ *         - description
+ *         - image
+ *         - userId
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: The title of the product.
+ *         category:
+ *           type: string
+ *           description: The category of the product.
+ *         price:
+ *           type: number
+ *           description: The price of the product.
+ *         description:
+ *           type: string
+ *           description: A description of the product.
+ *         image:
+ *           type: string
+ *           description: The URL of the product's image.
+ *         availability:
+ *           type: boolean
+ *           description: Indicates whether the product is available or not (default is true).
+ *         userId:
+ *           type: string
+ *           description: The ID of the user who owns this product.
+ *
+ * @swagger
+ * tags:
+ *   name: Products
+ *   description: API endpoints for managing products.
+ */
 // get all products route------>
 /**
  * @swagger
