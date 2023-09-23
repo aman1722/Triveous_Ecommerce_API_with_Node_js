@@ -1,5 +1,8 @@
+// importing all module-------->
 const mongoose = require("mongoose");
 
+
+// schema for cart------>
 const cartSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -22,8 +25,12 @@ const cartSchema = mongoose.Schema({
   ],
 });
 
+
+// model for cart------->
 const CartModel = mongoose.model("Cart", cartSchema);
 
+
+// export module----->
 module.exports = {
     CartModel
 };

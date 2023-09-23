@@ -1,8 +1,9 @@
+// importing all module-------->
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 
-
+// auth middleware----->
 const authMiddleware = (req,res,next)=>{
     const token = req.headers.authorization.split(' ')[1] || req.headers.authorization;
     if(token){
@@ -21,7 +22,7 @@ const authMiddleware = (req,res,next)=>{
     }
 }
 
-
+// export module----->
 module.exports={
     authMiddleware
 }

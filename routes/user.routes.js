@@ -1,14 +1,15 @@
+// importing all module-------->
 const express = require("express");
 const { body } = require("express-validator");
 const { register, login, logout } = require("../controllers/user.controllers");
 const { authMiddleware } = require("../middleware/auth.middleware");
 
-
+// creating a user router instance----->
 const userRouter = express.Router();
 
 
 
-
+// register route----->
 userRouter.post("/register", [
     body("username")
         .notEmpty()
@@ -29,7 +30,7 @@ userRouter.post("/register", [
 
 
 
-
+// login route------>
 userRouter.post("/login",[
     body("email")
       .notEmpty()
@@ -41,18 +42,18 @@ userRouter.post("/login",[
       .withMessage("Password is required")
       .isLength({ min: 6 })
       .withMessage("Password must be at least 6 characters"),
-  ], login);
+], login);
 
 
 
 
-
+// logout route--->
 userRouter.post("/logout",authMiddleware, logout);
 
 
 
 
-
+// module export---->
 module.exports = {
     userRouter
 }

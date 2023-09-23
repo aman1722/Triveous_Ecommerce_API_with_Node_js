@@ -1,8 +1,9 @@
+// importing all module-------->
 const { ProductModel } = require("../models/product.model");
 
 
 
-
+// seller retrive his posted product----->
 const getSellerProducts = async (req, res) => {
     try {
         const { userId } = req.body;
@@ -15,6 +16,7 @@ const getSellerProducts = async (req, res) => {
 }
 
 
+// add new product---->
 const addProducts = async (req, res) => {
     try {
         const requireFields = [
@@ -42,6 +44,7 @@ const addProducts = async (req, res) => {
 }
 
 
+// update existing product------>
 const updateProducts = async (req, res) => {
     try {
         const { id } = req.params;
@@ -62,6 +65,9 @@ const updateProducts = async (req, res) => {
     }
 }
 
+
+
+// delete a perticular product------>
 const deleteProduct = async (req, res) => {
     try {
         const { id } = req.params;
@@ -81,6 +87,9 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+
+
+// retrive a product by its ID------>
 const getSellerProductById = async(req,res)=>{
     try {
         const { id } = req.params;
@@ -97,6 +106,10 @@ const getSellerProductById = async(req,res)=>{
         res.status(501).send({ msg: "Internal Server error", error: error.message });
     }
 }
+
+
+
+// export module------>
 module.exports = {
     getSellerProducts, addProducts, updateProducts, deleteProduct,getSellerProductById
 }

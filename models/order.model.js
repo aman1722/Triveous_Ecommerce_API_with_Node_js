@@ -1,5 +1,8 @@
+// importing all module-------->
 const mongoose = require("mongoose");
 
+
+// schema for order ----->
 const orderSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -35,8 +38,11 @@ const orderSchema = mongoose.Schema({
   },
 });
 
+
+// model for orders------->
 const OrderModel = mongoose.model("Order", orderSchema);
 
+// module export------>
 module.exports = {
     OrderModel
 };

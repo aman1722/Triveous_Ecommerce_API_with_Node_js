@@ -1,3 +1,4 @@
+// importing all module-------->
 const express = require("express");
 const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
@@ -11,18 +12,23 @@ const { authMiddleware } = require("./middleware/auth.middleware");
 const { rateLimiter } = require("./middleware/rateLimiter.middleware");
 
 
-
-
-
+// creating an express app instance-------->
 const app = express();
 
+// middlewares------>
 app.use(express.json());
 app.use(cors());
 
+
+
+// Home route-------->
 app.get("/",(req,res)=>{
     res.status(200).send({msg:"Welcome To Ecommerce Api Backend"})
 })
 
+
+
+// other routes----->
 app.use(rateLimiter);
 app.use("/user",userRouter);
 app.use("/user/products",userProductRouter);
@@ -33,6 +39,7 @@ app.use("/order",orderRouter);
 
 
 
+// app listing and connection to db------->
 app.listen(process.env.PORT,async()=>{
     try {
         await connection;

@@ -1,9 +1,9 @@
-// module importing
+// importing all module-------->
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 
-//Schema for user 
+//Schema for user -------->
 const userSchema = mongoose.Schema({
     username: {
         type: String,
@@ -26,11 +26,11 @@ const userSchema = mongoose.Schema({
       },
 })
 
-//model for user
+// model for user------>
 const UserModel = mongoose.model("user",userSchema);
 
 
-//export
+//export module---->
 module.exports={
     UserModel
 }

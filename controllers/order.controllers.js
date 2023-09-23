@@ -1,10 +1,11 @@
+// importing all module-------->
 const { CartModel } = require("../models/cart.model");
 const { OrderModel } = require("../models/order.model");
 
 
 
 
-
+// place order------->
 const placeOrder = async(req,res)=>{
     try {
         const {userId} = req.body;
@@ -47,7 +48,7 @@ const placeOrder = async(req,res)=>{
       }
 }
 
-
+// get order history----->
 const orderHistory = async(req,res)=>{
      try {
         const {userId} = req.body;
@@ -62,6 +63,7 @@ const orderHistory = async(req,res)=>{
 }
 
 
+// get perticular order by ID------>
 const getOrderById = async(req,res)=>{
      try {
         const {userId} = req.body;
@@ -80,7 +82,7 @@ const getOrderById = async(req,res)=>{
 }
 
 
-
+// update status of order------->
 const updateStatus = async(req,res)=>{
     try {
         const {id} = req.params;
@@ -94,6 +96,9 @@ const updateStatus = async(req,res)=>{
         res.status(501).send({ msg: "Internal Server error", error: error.message });
     }
 }
+
+
+// export modules----->
 module.exports={
     placeOrder,orderHistory,getOrderById,updateStatus
 }

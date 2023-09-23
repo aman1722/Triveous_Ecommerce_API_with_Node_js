@@ -1,3 +1,4 @@
+// importing all module-------->
 const { ProductModel } = require("../models/product.model")
 const { CartModel } = require("../models/cart.model");
 
@@ -5,7 +6,7 @@ const { validationResult } = require("express-validator");
 
 
 
-
+// add to cart------>
 const addToCart = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -53,7 +54,7 @@ const addToCart = async (req, res) => {
 }
 
 
-
+// retrive cart------>
 const getCart = async (req, res) => {
     try {
         const { userId } = req.body;
@@ -74,7 +75,7 @@ const getCart = async (req, res) => {
 };
 
 
-
+// decrese quanity of cart product------->
 const quantityDecrement = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -110,6 +111,8 @@ const quantityDecrement = async (req, res) => {
 
 }
 
+
+// increase quanity of cart product------->
 const quantityIncrement = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -147,6 +150,8 @@ const quantityIncrement = async (req, res) => {
 
 }
 
+
+// remove product from cart ------->
 const removeProductFromCart = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -181,7 +186,7 @@ const removeProductFromCart = async (req, res) => {
     }
 }
 
-
+// export modules------>
 module.exports = {
     addToCart, getCart, quantityDecrement, quantityIncrement, removeProductFromCart
 }

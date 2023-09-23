@@ -1,5 +1,8 @@
+// importing all module-------->
 const mongoose = require('mongoose');
 
+
+// schema for blaacklisting token-------->
 const blacklistSchema = mongoose.Schema({
     token: {
         type: String,
@@ -8,9 +11,11 @@ const blacklistSchema = mongoose.Schema({
     }
 })
 
-
+// model for blacklisted token----->
 const blacklistModel = mongoose.model('blacklistedToken', blacklistSchema);
 
+
+// module export----->
 module.exports = {
     blacklistModel
 }

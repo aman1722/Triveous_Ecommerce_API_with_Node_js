@@ -1,8 +1,9 @@
+// importing all module-------->
 const { ProductModel } = require("../models/product.model");
 
 
 
-
+// user can get all products----->
 const getProducts = async (req, res) => {
     try {
 
@@ -18,7 +19,7 @@ const getProducts = async (req, res) => {
     }
 }
 
-
+// user can get all categories------>
 const getCategories = async (req, res) => {
     try {
         const categories = await ProductModel.aggregate([
@@ -37,6 +38,8 @@ const getCategories = async (req, res) => {
     }
 }
 
+
+// user can get perticular product by its ID-------->
 const getProductById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -52,6 +55,8 @@ const getProductById = async (req, res) => {
     }
 }
 
+
+// module export------->
 module.exports = {
     getProducts, getCategories, getProductById
 }

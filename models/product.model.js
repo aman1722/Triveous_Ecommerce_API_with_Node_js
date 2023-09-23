@@ -1,6 +1,7 @@
+// importing all module-------->
 const mongoose = require("mongoose");
 
-
+// schema for products----->
 const productSchema = mongoose.Schema({
     title: {
         type: String,
@@ -33,10 +34,10 @@ const productSchema = mongoose.Schema({
     }
 })
 
-
+// model for products----->
 const ProductModel = mongoose.model("product",productSchema);
 
-
+// export module------->
 module.exports={
     ProductModel
 }

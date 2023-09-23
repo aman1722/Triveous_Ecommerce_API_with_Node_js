@@ -8,6 +8,8 @@ const authorizeMiddleware = (permittedRoles) => {
     };
 };
 
+
+// export module---->
 module.exports={
     authorizeMiddleware
 }

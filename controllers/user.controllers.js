@@ -1,3 +1,4 @@
+// importing all module-------->
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -8,7 +9,7 @@ const { validationResult } = require("express-validator");
 
 
 
-
+// user registration ------>
 const register = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -32,7 +33,7 @@ const register = async (req, res) => {
     }
 }
 
-
+// user login -------->
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -60,7 +61,7 @@ const login = async (req, res) => {
 }
 
 
-
+// user logout------->
 const logout = async (req, res) => {
     try {
         const token = req.headers.authorization.split(' ')[1] || req.headers.authorization;
@@ -74,7 +75,7 @@ const logout = async (req, res) => {
     }
 }
 
-
+// export module------->
 module.exports = {
     register,
     login,
