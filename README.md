@@ -118,3 +118,31 @@ password: `chunnu`
 #### Dummy User Credentials 2: 
 email: `munnu@gmail.com`
 password: `munnu`
+
+
+## API Documentation 
+
+### User-swagger
+![image](https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js/assets/112754413/e9848fe8-464f-4781-86fd-f91f57154ceb)
+
+
+### User-Products-swagger
+![image](https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js/assets/112754413/6aa09919-e74a-4a6f-b12d-5367a09afbae)
+
+
+### Seller-Products-swagger
+![image](https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js/assets/112754413/3d31e7e1-6b77-4931-9e68-332ff64a54e8)
+
+
+
+### Cart-swagger
+![image](https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js/assets/112754413/1d72e563-9b2e-4814-ba22-a65a9121056c)
+
+
+### order-swagger
+![image](https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js/assets/112754413/abd3212b-747f-405e-b7c1-a0c372b79d19)
+
+
+### Schema-swagger
+![image](https://github.com/aman1722/Triveous_Ecommerce_API_with_Node_js/assets/112754413/bb5d6910-f362-4f87-b881-493c035961cf)
+
