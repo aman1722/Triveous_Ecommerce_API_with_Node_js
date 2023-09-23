@@ -8,8 +8,86 @@ const { authMiddleware } = require("../middleware/auth.middleware");
 const userRouter = express.Router();
 
 
-
 // register route----->
+
+/**
+ * @swagger
+ * tags:
+ *   - name: Users
+ *     description: API endpoints related to users
+ */
+
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags:
+ *       - Users
+ *     description: Register a new user with a unique username and a valid email.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username of the user.
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: The email address of the user.
+ *               password:
+ *                 type: string
+ *                 description: The password for the user account. Must be at least 8 characters long.
+ *           example:
+ *             username: john_doe
+ *             email: johndoe@example.com
+ *             password: mysecurepassword
+ *     responses:
+ *       '201':
+ *         description: User registration successful.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: A success message indicating registration success.
+ *       '400':
+ *         description: Bad request. Validation error or user already exists.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       msg:
+ *                         type: string
+ *                         description: Error message for each validation error.
+ *       '500':
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: An error message indicating internal server error.
+ *                 error:
+ *                   type: string
+ *                   description: The detailed error message.
+ */
+
+
 userRouter.post("/register", [
     body("username")
         .notEmpty()
@@ -31,6 +109,87 @@ userRouter.post("/register", [
 
 
 // login route------>
+
+
+ /**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: User login
+ *     tags:
+ *       - Users
+ *     description: Log in an existing user by providing a valid email and password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: The email address of the user.
+ *               password:
+ *                 type: string
+ *                 description: The password for the user account. Must be at least 8 characters long.
+ *           example:
+ *             email: johndoe@example.com
+ *             password: mysecurepassword
+ *     responses:
+ *       '200':
+ *         description: Login successful.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: A success message indicating login success.
+ *                 token:
+ *                   type: string
+ *                   description: JWT token for authenticated user.
+ *       '400':
+ *         description: Bad request. Validation error or user not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       msg:
+ *                         type: string
+ *                         description: Error message for each validation error.
+ *       '401':
+ *         description: Unauthorized. Incorrect password.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   description: Error message indicating incorrect password.
+ *       '500':
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: An error message indicating internal server error.
+ *                 error:
+ *                   type: string
+ *                   description: The detailed error message.
+ */
+
 userRouter.post("/login",[
     body("email")
       .notEmpty()
@@ -48,6 +207,54 @@ userRouter.post("/login",[
 
 
 // logout route--->
+/**
+ * @swagger
+ * /user/logout:
+ *   post:
+ *     summary: Logout a user
+ *     tags:
+ *       - Users
+ *     description: Log out the currently authenticated user by blacklisting their authentication token.
+ *     security:
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
+ *     responses:
+ *       '200':
+ *         description: Logout successful.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   description: A success message indicating logout success.
+ *       '401':
+ *         description: Unauthorized. Invalid or expired token.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   description: Error message indicating unauthorized access.
+ *       '500':
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: An error message indicating internal server error.
+ *                 error:
+ *                   type: string
+ *                   description: The detailed error message.
+ */
+
+
+
 userRouter.post("/logout",authMiddleware, logout);
 
 

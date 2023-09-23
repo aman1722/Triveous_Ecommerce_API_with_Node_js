@@ -10,6 +10,8 @@ const { cartRouter } = require("./routes/cart.routes");
 const { orderRouter } = require("./routes/order.routes");
 const { authMiddleware } = require("./middleware/auth.middleware");
 const { rateLimiter } = require("./middleware/rateLimiter.middleware");
+const { swaggerSpec } = require("./swagger");
+const swaggerUI = require("swagger-ui-express");
 
 
 // creating an express app instance-------->
@@ -19,7 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // Home route-------->
 app.get("/",(req,res)=>{
