@@ -12,6 +12,47 @@ const orderRouter = express.Router();
  *   - name: Order
  *     description: API endpoints related to orders
  */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Order:
+ *       type: object
+ *       required:
+ *         - user
+ *         - items
+ *         - grandTotal
+ *         - status
+ *         - orderedAt
+ *       properties:
+ *         user:
+ *           type: string
+ *           description: The user who placed the order (reference to UserModel).
+ *         items:
+ *           type: array
+ *           description: The list of items in the order, including product reference and quantity.
+ *           items:
+ *             type: object
+ *             properties:
+ *               product:
+ *                 type: string
+ *                 description: The product in the order (reference to ProductModel).
+ *               quantity:
+ *                 type: number
+ *                 description: The quantity of the product in the order (default is 1).
+ *         grandTotal:
+ *           type: number
+ *           description: The total cost of the order.
+ *         status:
+ *           type: string
+ *           description: The status of the order (must be one of "placed," "dispatch," or "delivered," default is "placed").
+ *         orderedAt:
+ *           type: string
+ *           format: date-time
+ *           description: The date and time when the order was placed (default is the current date and time).
+ *
+ */
 // post a order---->
 /**
  * @swagger

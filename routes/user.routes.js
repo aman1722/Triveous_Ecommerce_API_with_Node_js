@@ -7,7 +7,36 @@ const { authMiddleware } = require("../middleware/auth.middleware");
 // creating a user router instance----->
 const userRouter = express.Router();
 
-
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - username
+ *         - email
+ *         - password
+ *         - role
+ *       properties:
+ *         username:
+ *           type: string
+ *           description: The username of the user.
+ *         email:
+ *           type: string
+ *           description: The email address of the user (must be unique).
+ *         password:
+ *           type: string
+ *           description: The password of the user.
+ *         role:
+ *           type: string
+ *           description: The role of the user (must be either "user" or "seller", default is "user").
+ *
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: API endpoints for managing users.
+ */
 // register route----->
 
 /**

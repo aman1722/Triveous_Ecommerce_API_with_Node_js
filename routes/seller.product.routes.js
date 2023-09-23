@@ -49,10 +49,6 @@ const sellerProductRouter = express.Router();
  *           type: string
  *           description: The ID of the user who owns this product.
  *
- * @swagger
- * tags:
- *   name: Products
- *   description: API endpoints for managing products.
  */
 // get all product posted by seller---->
 /**

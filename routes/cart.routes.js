@@ -13,6 +13,35 @@ const cartRouter = express.Router();
  *   - name: Cart
  *     description: API endpoints related to cart
  */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Cart:
+ *       type: object
+ *       required:
+ *         - user
+ *         - items
+ *       properties:
+ *         user:
+ *           type: string
+ *           description: The user who owns the cart (reference to UserModel).
+ *         items:
+ *           type: array
+ *           description: The list of items in the cart, including product reference and quantity.
+ *           items:
+ *             type: object
+ *             properties:
+ *               product:
+ *                 type: string
+ *                 description: The product in the cart (reference to ProductModel).
+ *               quantity:
+ *                 type: number
+ *                 description: The quantity of the product in the cart (default is 1).
+ *
+ * 
+ */
 // post a cart----->
 /**
  * @swagger
