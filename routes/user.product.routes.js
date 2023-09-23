@@ -13,7 +13,7 @@ userProductRouter.get("/",getProducts);
 userProductRouter.get("/categories",getCategories);
 
 // get product by id route------->
-userProductRouter.get("/getProductById/:id",getProductById);
+userProductRouter.get("/:id",getProductById);
 
 
 // export module------->

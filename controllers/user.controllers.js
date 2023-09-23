@@ -2,7 +2,7 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { blacklistModel } = require("../models/blacklist.model");
+const { BlacklistModel } = require("../models/blacklist.model");
 const { validationResult } = require("express-validator");
 
 
@@ -65,7 +65,7 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
     try {
         const token = req.headers.authorization.split(' ')[1] || req.headers.authorization;
-        const blacklisted = new blacklistModel({ "token": token });
+        const blacklisted = new BlacklistModel({ "token": token });
         await blacklisted.save();
         console.log('logout successful')
         res.status(200).send({ msg: 'Logout Successful' });

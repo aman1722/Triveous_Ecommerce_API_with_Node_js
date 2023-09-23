@@ -13,7 +13,7 @@ const sellerProductRouter = express.Router();
 sellerProductRouter.get("/",authorizeMiddleware("seller"),getSellerProducts);
 
 // get product by ID---->
-sellerProductRouter.get("/getProductById/:id",authorizeMiddleware("seller"),getSellerProductById);
+sellerProductRouter.get("/:id",authorizeMiddleware("seller"),getSellerProductById);
 
 // add new Product----->
 sellerProductRouter.post("/addProduct",authorizeMiddleware("seller"),addProducts);

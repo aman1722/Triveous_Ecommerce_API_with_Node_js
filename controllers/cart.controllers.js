@@ -13,7 +13,7 @@ const addToCart = async (req, res) => {
         return res.status(400).send({ errors: errors.array() });
     }
     try {
-        const { product, quantity, userId } = req.body;
+        let { product, quantity, userId } = req.body;
 
         if (!quantity) quantity = 1;
 
@@ -30,7 +30,7 @@ const addToCart = async (req, res) => {
                 ],
             });
         } else {
-            const existingItem = cart.items.find((item) => item.product.toString() === product);
+            let existingItem = cart.items.find((item) => item.product.toString() === product);
 
             if (existingItem) {
                 // If the product exists, update the quantity

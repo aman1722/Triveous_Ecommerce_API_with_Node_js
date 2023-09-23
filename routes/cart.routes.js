@@ -2,7 +2,7 @@
 const express = require("express");
 const { body, param } = require("express-validator");
 const { addToCart, getCart, quantityDecrement, quantityIncrement, removeProductFromCart } = require("../controllers/cart.controllers");
-const { authMiddleware } = require("../middleware/auth.middleware");
+
 
 
 // create a cart route instance------->
@@ -15,11 +15,11 @@ cartRouter.post("/add",[
       .withMessage("Product ID is required")
       .isMongoId()
       .withMessage("Invalid product ID"),
-],authMiddleware,addToCart);
+],addToCart);
 
 
 // retrive cart------->
-cartRouter.get("/",authMiddleware,getCart)
+cartRouter.get("/",getCart)
 
 // decrement cart quantity---->
 cartRouter.patch("/decrement/:id",[
@@ -28,7 +28,7 @@ cartRouter.patch("/decrement/:id",[
       .withMessage("Product ID is required")
       .isMongoId()
       .withMessage("Invalid product ID"),
-],authMiddleware,quantityDecrement)
+],quantityDecrement)
 
 // increment cart quantity------>
 cartRouter.patch("/increment/:id",[
@@ -37,18 +37,17 @@ cartRouter.patch("/increment/:id",[
       .withMessage("Product ID is required")
       .isMongoId()
       .withMessage("Invalid product ID"),
-],authMiddleware,quantityIncrement)
+],quantityIncrement)
 
 
 // delete cart----->
-cartRouter.delete("/remove/:id",[
+cartRouter.delete("/delete/:id",[
       param("id")
         .notEmpty()
         .withMessage("Product ID is required.")
         .isMongoId()
         .withMessage("Invalid product ID"),
     ],
-    authMiddleware,
     removeProductFromCart
 );
 
