@@ -127,6 +127,8 @@ cartRouter.post("/add",[
  *     description: Retrieve the user's cart with added products.
  *     tags:
  *       - Cart
+ *     security:
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: header
  *         name: Authorization
