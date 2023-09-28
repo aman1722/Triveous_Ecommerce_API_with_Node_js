@@ -127,8 +127,6 @@ cartRouter.post("/add",[
  *     description: Retrieve the user's cart with added products.
  *     tags:
  *       - Cart
- *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
  *     parameters:
  *       - in: header
  *         name: Authorization
