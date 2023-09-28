@@ -51,8 +51,8 @@ const cartRouter = express.Router();
  *     description: Add a product to the user's cart.
  *     tags:
  *       - Cart
- *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       security:
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: body
  *         name: product
@@ -176,7 +176,7 @@ cartRouter.get("/",getCart)
  *     tags:
  *       - Cart
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: path
  *         name: id
@@ -249,7 +249,7 @@ cartRouter.patch("/decrement/:id",[
  *     tags:
  *       - Cart
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: path
  *         name: id
@@ -323,7 +323,7 @@ cartRouter.patch("/increment/:id",[
  *     tags:
  *       - Cart
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: path
  *         name: id
