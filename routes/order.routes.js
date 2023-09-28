@@ -63,7 +63,7 @@ const orderRouter = express.Router();
  *     tags:
  *       - Order
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: body
  *         name: order
@@ -121,7 +121,7 @@ orderRouter.post("/",placeOrder);
  *     tags:
  *       - Order
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     responses:
  *       '200':
  *         description: Successfully retrieved order history.
@@ -157,7 +157,7 @@ orderRouter.get("/history",orderHistory);
  *     tags:
  *       - Order
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: path
  *         name: id
@@ -215,7 +215,7 @@ orderRouter.get("/:id",getOrderById)
  *     tags:
  *       - Order
  *     security:
- *       - api_key: []  # Assuming you're using API key authentication (update if necessary)
+ *       - bearerAuth: []  # This associates the "bearerAuth" scheme with this route
  *     parameters:
  *       - in: path
  *         name: id
