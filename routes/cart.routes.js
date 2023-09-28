@@ -130,7 +130,7 @@ cartRouter.post("/add",[
  *     parameters:
  *       - in: header
  *         name: Authorization
- *         description: API key token for authentication.
+ *         description: JWT token for authentication.
  *         required: true
  *     responses:
  *       '200':
